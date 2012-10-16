@@ -1,4 +1,4 @@
-OSN
+Open Sensor Network
 ===
 
-Files concerning the Open Sensor Network pilot.
+Files concerning the OSN pilot.
