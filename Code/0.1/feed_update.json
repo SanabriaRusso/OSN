@@ -1,0 +1,17 @@
+{
+    "datastreams": [
+        {
+            "current_value": "3.84", 
+            "id": "Luminosity"
+        }, 
+        {
+            "current_value": "24.78", 
+            "id": "Temperature"
+        }, 
+        {
+            "current_value": "3", 
+            "id": "Noise"
+        }
+    ], 
+    "version": "1.0.0"
+}
