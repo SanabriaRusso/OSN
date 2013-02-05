@@ -1,0 +1,13 @@
+{
+    "datastreams": [
+        {
+            "current_value": "18.0", 
+            "id": "Temperature1"
+        }, 
+        {
+            "current_value": "18.3", 
+            "id": "Temperature2"
+        }
+    ], 
+    "version": "0.2"
+}
