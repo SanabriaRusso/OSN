@@ -1,0 +1,15 @@
+# VIM backups, swaps, etc.
+.*
+*~
+*.swp
+
+# Python bytecode
+*.pyc
+
+# Arduino garbage
+*.hex
+*.elf
+
+# Just LaTeX source code and pdf output
+*.aux
+*.log
