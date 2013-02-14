@@ -1,3 +1,0 @@
-ZigBee RF Modules by Digi International
-=======================================
-http://ftp1.digi.com/support/documentation/90000976_G.pdf
