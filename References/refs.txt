@@ -1,2 +1,0 @@
-# PEP 257 -- Docstring conventions
-http://www.python.org/dev/peps/pep-0257/
