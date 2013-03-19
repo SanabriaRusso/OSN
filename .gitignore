@@ -17,6 +17,10 @@
 # Just LaTeX source code and pdf output
 *.aux
 *.log
+*.sty
+*.lof
+*.lot
+*.out
 
 # Deliverables folder, not necessary
 Deliverables/**/*
