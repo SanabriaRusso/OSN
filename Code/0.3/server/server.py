@@ -5,6 +5,8 @@
 from argparse import ArgumentParser
 import commands
 import json
+import pickle
+import re
 from serial import Serial
 from serial import SerialException
 import struct
@@ -30,35 +32,14 @@ def direct_io_handler(name, packet, debug):
     """
 
     if debug:
-        print "Samples Received: ", packet['samples']
+        print "Packet Received: ", packet
 
-    # Proper name of the samples
-    proper_names = ['Temperature1',\
-            'Temperature2',\
-            ]
+    tmp = packet['samples'][0].values()
+    tmp[0] = float(tmp[0])/10
+    print tmp
+    #upload(hex(packet['source_addr_long']), packet['samples'][0].values())
+    upload(hex(packet['source_addr_long']), tmp)
 
-    # Will contain all datastreams and its values
-    feed = {}
-    feed['version'] = '0.2'
-    feed['datastreams'] = ()
-
-    # Form a valid JSON dictionary
-    for i in range(0, (len(packet['samples']) + 1)):
-        try:
-            feed['datastreams'] = feed['datastreams'] + (\
-                    {'id': proper_names[i],\
-                    'current_value': str(LM35(packet['samples'][0].values()[i]))}\
-                    ,)
-        except IndexError as e:
-            print "FATAL ERROR: ", e
-            exit()
-
-    # Write JSON object
-    with open('feed.json', mode='w') as f:
-        json.dump(feed, f, indent=4)
-
-    # Upload information to Cosm
-    commands.getstatusoutput('curl --request PUT --data-binary @feed.json --header "X-ApiKey: aTh_eoPhHeK9yJVjz4wJMXIh1kiSAKxrTGZPM2tUWHJ3TT0g" --verbose http://api.cosm.com/v2/feeds/98160')
 
 
 def xbee_arduino_handler(name, packet, debug):
@@ -82,15 +63,87 @@ def xbee_arduino_handler(name, packet, debug):
     datalength=len(rf)
     # if datalength is compatible with two floats
     # then unpack the 4 byte chunks into floats
-    print datalength
     if datalength==24:
         h=struct.unpack('f',packet['rf_data'][0:4])[0]
         t=struct.unpack('f',packet['rf_data'][4:8])[0]
         s=struct.unpack('f',packet['rf_data'][8:])[0]
-        print sa,' ',rf,' t=',t,'h=',h,'s=',s
-
+        #print sa,' ',rf,' t=',t,'h=',h,'s=',s
     else:
         print sa,' ',rf
+
+    upload(sa, (t,h,s))
+
+
+def upload(sa, data):
+    """
+    Uploads gathered data to the Internet given a source address and a list with different values.
+    """
+
+    # Will contain all datastreams and its values
+    feed = {}
+    feed['version'] = '0.3'
+    feed['datastreams'] = ()
+
+
+    # Form a valid JSON dictionary
+    for i in range(0, len(data)):
+        try:
+            feed['datastreams'] = feed['datastreams'] + (\
+                    {'id': str(i),\
+                    'current_value': str(data[i])\
+                    }\
+                    ,)
+        except IndexError as e:
+            print "ERROR: ", e
+            exit()
+
+
+    # Write JSON object
+    with open('feed.json', mode='w') as f:
+        json.dump(feed, f, indent=4)
+
+
+    try:
+        addr_file = open('addr.pck', 'r')
+        addr = pickle.load(addr_file)
+
+        if not addr.has_key(sa):
+            addr_file.close()
+            addr_file = open('addr.pck', 'w')
+
+            # ------ FEED CREATION ------ #
+            new_feed = {}
+            new_feed['title'] = sa
+            new_feed['version'] = '0.3'
+            with open('new_feed.json', mode='w') as f:
+                json.dump(new_feed, f, indent=4)
+            o = commands.getstatusoutput('curl --request POST --data-binary @new_feed.json --header "X-ApiKey: yXt35WoQD-LyLj7aK7kGVEkZI-KSAKxOMTNpRXVDdTNhWT0g" --verbose http://api.cosm.com/v2/feeds/')
+            try:
+                url = re.search('http://api.cosm.com/v2/feeds/\d+', o[1]).group()
+            except AttributeError as att:
+                print att
+
+            addr[sa] = url
+            pickle.dump(addr, addr_file)
+
+            # ------ DATA UPLOAD ------ #
+            out = commands.getstatusoutput('curl --request PUT --data-binary @feed.json --header "X-ApiKey: yXt35WoQD-LyLj7aK7kGVEkZI-KSAKxOMTNpRXVDdTNhWT0g" --verbose ' + addr[sa])
+
+        else:
+            # ------ DATA UPLOAD ------ #
+            out = commands.getstatusoutput('curl --request PUT --data-binary @feed.json --header "X-ApiKey: yXt35WoQD-LyLj7aK7kGVEkZI-KSAKxOMTNpRXVDdTNhWT0g" --verbose ' + addr[sa])
+            #print out[1]
+
+    except EOFError:
+        addr_file = open('addr.pck', 'w')
+        pickle.dump({}, addr_file)
+    except IOError:
+        print 'WARNING: There is no addresses file, creating a new one...'
+        addr_file = open('addr.pck', 'w')
+        pickle.dump({}, addr_file)
+    finally:
+        addr_file.close()
+
 
 
 def main():
