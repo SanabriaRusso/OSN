@@ -1,0 +1,86 @@
+% Chapter Template
+
+\chapter{State Of The Art} % Main chapter title
+
+\label{Chapter2} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+\lhead{Chapter 2. \emph{State Of The Art}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+There are already some initiatives that make use of wireless sensor networks. The word ``initiative'' is not intended to refer just to companies but also to individuals who belong to the \href{https://en.wikipedia.org/wiki/Do_it_yourself}{do it yourself} (DIY) movement.
+
+At the time of writing, we can distinguish between two main kind of sensor networks, company or community driven networks, depending on who shapes the system.
+
+However, during the last years sensor networks have not been used just because of their usefulness but also with data sociability and smart cities in mind. As an example, a citizen could present to the authorities actual noise levels at night, as well as knowing if a storm is coming because some friend shared his pressure and humidity levels on a social networking site.
+
+These networks can originate a big amount of data, which along the Internet of Things create the necessity of storing this information and making it always available for further usage. \href{http://www.cosm.com/}{Cosm} (former Pachube) and \href{http://open.sen.se/}{Sen.se} are good examples of this kind of websites and are described below.
+
+%---------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Company-led sensor networks}
+
+%
+% TODO - Add a little description about advantages and disadvantages about this kind of networks
+%
+
+%-----------------------------------
+%	SUBSECTION 1.1
+%-----------------------------------
+\subsection{\href{http://www.libelium.com/}{Libelium}}
+
+This is one of the biggest companies in the world built around wireless sensor networks. It offers the mechanisms and tools to deploy/build systems around the Internet of Things, smart cities and M2M communications.
+
+The majority of the products they sell are focused on one specific application, such as waste management, structural health, etc. These are intended to be bought by system integrators for end users. However, they also offer the so-called ``Waspmote'', which is a sensor device for developers that can be freely customized and reprogrammed, since this is an open source product.
+
+Their products are being widely used across more than 75 countries and they are definitely one of the leaders of the wireless sensor network industry.
+
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
+
+\section{Community-led sensor networks}
+
+%
+% TODO - Add a little description about advantages and disadvantages about this kind of networks
+%
+
+%-----------------------------------
+%	SUBSECTION 2.1
+%-----------------------------------
+\subsection{\href{http://www.aiqualityegg.com}{Air Quality Egg}}
+
+This is a sensor network that aims, as its own name indicates, to measure the air quality through $NO_{2}$ and $CO$ levels.
+
+Each user is supposed to connect their egg to their local network via an Ethernet inferface. Then, a bunch of outdoor sensors are placed outside and communicate their readings to the base station (the egg) wirelessly through a radio frequency transmitter. Finally the data is sent in real time to \href{http://www.cosm.com}{Cosm}, an open data portal that will be described in the next section.
+
+It is worth mentioning that the AQE project is completely open, hence anyone can improve the platform as well as building his own egg from scratch without having to actually buy one. All the information related to the hardware, software and sensor calibration can be found in their \href{http://airqualityegg.wikispaces.org}{wiki}.
+
+%-----------------------------------
+%	SUBSECTION 2.2
+%-----------------------------------
+\subsection{\href{http://beta.smartcitizen.me}{Smart Citizen}}
+
+Although this is a very young project (still in beta stage) it intends to create the biggest community around social sensing.
+
+It was initially crowdfounded in 2012 through a \href{http://goteo.org/project/smart-citizen-sensores-ciudadanos}{Goteo} campaign and they are planning on going to Kickstarter soon.
+
+The Smart Citizen platform allows its users to precisely geolocate their data and see other users' information. There is also a very big emphasis in data sociability, since every value or datastream (set of values that represent an individual sensor) can be shared through any social networking site or even inside the same web application.
+
+Openness is as well one of their main values, since every piece of code (including the website) is open source licensed.
+
+%----------------------------------------------------------------------------------------
+%	SECTION 3
+%----------------------------------------------------------------------------------------
+
+\section{Open data services}
+
+All gathered information must be stored in some place, and this is where open data portals come in play. 
+
+These websites provide users with an open API so they can upload new values, create new feeds (representation of an environment), retrieve the data end even create customized triggers. This way, we cannot only sense but act to certain kinds of events. Because data itself is worthless, one of their most important features are data visualization tools.
+
+Good examples of these sites are, as mentioned before, \href{http://www.cosm.com}{Cosm} and \href{http://open.sen.se/}{Sen.se}. Both are free to use and very easy to interact with (mainly through HTTP packets).
