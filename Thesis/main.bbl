@@ -1,0 +1,95 @@
+\begin{thebibliography}{13}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Arnold et~al.(1998)Arnold, Wilson, and Boshier]{Reference3}
+A.~S. Arnold, J.~S. Wilson, and M.~G. Boshier.
+\newblock A simple extended-cavity diode laser.
+\newblock \emph{Review of Scientific Instruments}, 69\penalty0 (3):\penalty0
+  1236--1239, March 1998.
+\newblock URL \url{http://link.aip.org/link/?RSI/69/1236/1}.
+
+\bibitem[Wieman and Hollberg(1991)]{Reference2}
+Carl~E. Wieman and Leo Hollberg.
+\newblock Using diode lasers for atomic physics.
+\newblock \emph{Review of Scientific Instruments}, 62\penalty0 (1):\penalty0
+  1--20, January 1991.
+\newblock URL \url{http://link.aip.org/link/?RSI/62/1/1}.
+
+\bibitem[Hawthorn et~al.(2001)Hawthorn, Weber, and Scholten]{Reference1}
+C.~J. Hawthorn, K.~P. Weber, and R.~E. Scholten.
+\newblock Littrow configuration tunable external cavity diode laser with fixed
+  direction output beam.
+\newblock \emph{Review of Scientific Instruments}, 72\penalty0 (12):\penalty0
+  4477--4479, December 2001.
+\newblock URL \url{http://link.aip.org/link/?RSI/72/4477/1}.
+
+\bibitem[Chong and Kumar(2003)]{chong2003sensor}
+Chee-Yee Chong and Srikanta~P Kumar.
+\newblock Sensor networks: evolution, opportunities, and challenges.
+\newblock \emph{Proceedings of the IEEE}, 91\penalty0 (8):\penalty0 1247--1256,
+  2003.
+
+\bibitem[Wikipedia(2013)]{WikiSensor}
+Wikipedia.
+\newblock Sensor --- wikipedia{,} the free encyclopedia, 2013.
+\newblock URL
+  \url{http://en.wikipedia.org/w/index.php?title=Sensor&oldid=548402365}.
+\newblock [Online; accessed 3-April-2013].
+
+\bibitem[Aosong Electronics~Co.(2013)]{dht22sensor}
+Ltd Aosong Electronics~Co.
+\newblock Digital-output relative humidity \& temperature sensor/module dht22,
+  2013.
+\newblock URL
+  \url{https://cdn.shopify.com/s/files/1/0045/8932/files/DHT22.pdf?100745}.
+\newblock [Online; accessed 6-April-2013].
+
+\bibitem[Emartee(2013)]{emarteeminisound}
+Emartee.
+\newblock Mini sound sensor - emartee.com, 2013.
+\newblock URL
+  \url{http://www.emartee.com/product/42148/Mini%20Sound%20Sensor%20%20Arduino%20Compatible}.
+\newblock [Online; accessed 6-April-2013].
+
+\bibitem[Gertz and Di~Justo(2012)]{gertz2012environmental}
+Emily Gertz and Patrick Di~Justo.
+\newblock \emph{Environmental Monitoring with Arduino: Building Simple Devices
+  to Collect Data about the World Around Us}.
+\newblock Make, 2012.
+
+\bibitem[Sharp(2006)]{sharp}
+Sharp.
+\newblock Gp2y1010au0f compact optical dust sensor, 2006.
+\newblock URL
+  \url{http://sharp-world.com/products/device/lineup/data/pdf/datasheet/gp2y1010au_e.pdf}.
+\newblock [Online; accessed 6-April-2013].
+
+\bibitem[Nafis(2012)]{airquality}
+Chris Nafis.
+\newblock Monitoring your air quality, 2012.
+\newblock URL \url{http://www.howmuchsnow.com/arduino/airquality/}.
+\newblock [Online; accessed 4-April-2013].
+
+\bibitem[International(2007)]{xbeedatasheet}
+Digi International.
+\newblock Xbee series 2 oem rf modules, 2007.
+\newblock URL \url{ftp://ftp1.digi.com/support/documentation/90000866_A.pdf}.
+\newblock [Online; accessed 6-April-2013].
+
+\bibitem[Faludi(2010)]{faludi2010building}
+Robert Faludi.
+\newblock \emph{Building Wireless Sensor Networks: with ZigBee, XBee, Arduino,
+  and Processing}.
+\newblock O'Reilly Media, Incorporated, 2010.
+
+\bibitem[Arduino(2013)]{arduinounor3}
+Arduino.
+\newblock Arduino - arduinoboarduno, 2013.
+\newblock URL \url{http://arduino.cc/en/Main/arduinoBoardUno}.
+\newblock [Online; accessed 6-April-2013].
+
+\end{thebibliography}
