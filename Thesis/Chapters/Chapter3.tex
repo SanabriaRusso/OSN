@@ -1,6 +1,6 @@
 % Chapter Template
 
-\chapter{Methodology} % Main chapter title
+\chapter{Technologies} % Main chapter title
 
 \label{Chapter3} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
@@ -22,16 +22,16 @@ Three essential blocks form a sensor network. Namely sensors, processors and com
 
 We now live in a world where we hear a lot the word ``sensor'', but what is exactly a sensor? \emph{A sensor is a converter that measures a physical quantity and converts it into a signal which can be read by an observer or by an instrument.}\citep{WikiSensor}
 
-This might (and is) quite simple, but complexity resides on calibration and coming up with actual useful applications. Since every sensor from the same family is equal in terms of design but different in reality (due to small random variations during the fabrication process) output has to be adjusted to agree with a given standard. When it comes to applications, RFID tags can be used to determine wether a book is on the right spot in a library or not, or with a very intense light beam we can detect how the blood flows through a vein thus succesfully sensing heart rate. These are just two imaginative uses for nowaday sensors.
+This definition might seem (and is) quite simple, but complexity resides on calibration and coming up with actual useful applications. Since every sensor from the same family is equal in terms of design but different in reality (due to small random variations during the fabrication process) output has to be adjusted to agree with a given standard. When it comes to applications, RFID tags can be used to determine wether a book is on the right spot in a library or not, or with a very intense light beam we can detect how the blood flows through a vein thus succesfully sensing heart rate. These are just two imaginative uses for nowaday sensors.
 
 In the first (and only at the time) iteration of this pilot only environmental factors have been measured since those have been tested over and over for the last years and they serve as a proof of concept for this network.
 
 %-----------------------------------
 %	SUBSECTION 1 - DHT22
 %-----------------------------------
-\subsection{Aosong DHT22\citep{dht22sensor}}
+\subsection{Aosong DHT22}
 
-The DHT22 is a low cost humidity and temperature sensor designed by Aosong Electronics, a Chinese corporation. This is a digital sensor, which means that the output is represented in the form of bits, thus requiring some amount of computational power to ``interpret'' the results. The output format is precisely described in the datasheet of this product, and luckily there already are some library implementations to work with the DHT22. Then, this device will only work with platforms that allow digital input, such Arduino.
+The DHT22\citep{dht22sensor} is a low cost humidity and temperature sensor designed by Aosong Electronics, a Chinese corporation. This is a digital sensor, which means that the output is represented in the form of bits, thus requiring some amount of computational power to ``interpret'' the results. The output format is precisely described in the datasheet of this product, and luckily there already are some library implementations to work with the DHT22. Then, this device will only work with platforms that allow digital input, such Arduino.
 
 \begin{figure}[htbp]
     \centering
@@ -46,9 +46,9 @@ The DHT22 is a low cost humidity and temperature sensor designed by Aosong Elect
 %	SUBSECTION 2 - MINI SOUND SENSOR
 %------------------------------------
 
-\subsection{Emartee Mini Sound Sensor\citep{emarteeminisound}}
+\subsection{Emartee Mini Sound Sensor}
 
-Manufactured by Emartee, can also be found by the name of ``Emartee part number 4021'', and can be used to measure noise levels among other uses. Esentially, it consists on a microfone with a built-in amplifier onto a breakout board, which can be useful to work directly with perfboards or breadboards (both construction bases for rapid prototyping of electronic circuits).
+Manufactured by Emartee, can also be found by the name of ``Emartee part number 4021'', and can be used to measure noise levels among other uses. Esentially, it consists on a microphone with a built-in amplifier onto a breakout board, which can be useful to work directly with perfboards or breadboards (both construction bases for rapid prototyping of electronic circuits).
 
 The output signal is analog and is increased by a factor that allows an Arduino or any device with analog I/O pins to detect it easily\citep{gertz2012environmental}. Its operating voltage is 5V.
 
@@ -57,9 +57,9 @@ The output signal is analog and is increased by a factor that allows an Arduino 
 %	SUBSECTION 3 - SHARP DUST
 %------------------------------------
 
-\subsection{Sharp GP2Y1010AU0F\citep{sharp}}
+\subsection{Sharp GP2Y1010AU0F}
 
-This is an inexpensive optical dust sensor, used to measure air quality. It is made out of an infrarred emitting diode which with a well positioned phototransistor can measure the reflected IR rays thus detecting dust levels in the air. This device, which can be powered with up to 7V gives an output voltage (analog) proportional to dust density in the air. Some of its applications are air monitoring and air conditioning.
+This is an inexpensive optical dust sensor, used to measure air quality. It is made out of an infrarred emitting diode which with a well positioned phototransistor can measure the reflected IR rays thus detecting dust levels in the air\citep{sharp}. This device, which can be powered with up to 7V gives an output voltage (analog) proportional to dust density in the air. Some of its applications are air monitoring and air conditioning.
 
 \begin{figure}[htbp]
     \centering
@@ -76,9 +76,9 @@ Surprisingly, this detector, which is worth at the time of writing about \$12, g
 %	SECTION 2 - XBEE MODULE
 %----------------------------------------------------------------------------------------
 
-\section{Digi XBee\textregistered{} Wireless RF Module\citep{xbeedatasheet}}
+\section{Digi XBee\textregistered{} Wireless RF Module}
 
-These radio modules are based on the IEEE 802.14.4 standard and provide an unexpensive, low power, low rate communication. They mainly use ISM bands. Despite their size provide us with many interesting features, such as 128-bit encryption, over-the-air configuration and ADC/digital input/output pins.
+These radio modules are based on the IEEE 802.14.4 standard and provide an unexpensive, low power, low rate communication. They mainly use ISM bands. Despite their size provide us with many interesting features, such as 128-bit encryption, over-the-air configuration and ADC/digital input/output pins\citep{xbeedatasheet}.
 
 \begin{figure}[htbp]
     \centering
@@ -133,7 +133,7 @@ As it can be seen on the next picture, the board has many input/output pins that
     \label{fig:ArduinoUNO}
 \end{figure}
 
-Arduino UNO is the one ``flavour'' that has been chosen to perform this project, since it is cheap and also the most common. That means all shields\footnote{A shield is another board plugged on top of the Arduino to extend its functionalities.}  work by default on it and the community is the biggest. In particular, this model has the following features\citep{arduinounor3}:
+Arduino UNO is the one ``flavour'' that has been chosen to perform this project, since it is cheap and also the most common. That means all shields\footnote{A shield is another board plugged on top of the Arduino to extend its functionalities.}  work by default on it and the community it has is the biggest. In particular, this model has the following features\citep{arduinounor3}:
 \\
 
 \begin{table}[ht] 

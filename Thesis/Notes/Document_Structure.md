@@ -18,6 +18,7 @@
 ##
 * 3 - Materials, Protocols and Platform
     * Descripción de Arduino, XBee, sensores utilizados, etc.
+* 3.5 - Methodology
 * 4 - The Network
     * Estructura, código...
 * 5 - Results and Discussion

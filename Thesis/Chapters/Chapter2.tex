@@ -1,5 +1,3 @@
-% Chapter Template
-
 \chapter{State Of The Art} % Main chapter title
 
 \label{Chapter2} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
@@ -10,13 +8,13 @@
 %	INTRODUCTION
 %----------------------------------------------------------------------------------------
 
-There are already some initiatives that make use of wireless sensor networks. The word ``initiative'' is not intended to refer just to companies but also to individuals who belong to the \href{https://en.wikipedia.org/wiki/Do_it_yourself}{do it yourself} (DIY) movement.
+There are already some initiatives that make use of wireless sensor networks. The word ``initiative'' is not intended to refer just to companies but also to organizations and individuals who belong to the \href{https://en.wikipedia.org/wiki/Do_it_yourself}{do it yourself} (DIY) movement.
 
 At the time of writing, we can distinguish between two main kind of sensor networks, company or community driven networks, depending on who shapes the system.
 
 However, during the last years sensor networks have not been used just because of their usefulness but also with data sociability and smart cities in mind. As an example, a citizen could present to the authorities actual noise levels at night, as well as knowing if a storm is coming because some friend shared his pressure and humidity levels on a social networking site.
 
-These networks can originate a big amount of data, which along the Internet of Things create the necessity of storing this information and making it always available for further usage. \href{http://www.cosm.com/}{Cosm} (former Pachube) and \href{http://open.sen.se/}{Sen.se} are good examples of this kind of websites and are described below.
+These networks can originate a big amount of data, which with the Internet of Things create the necessity of storing this information and making it always available for further usage.
 
 %---------------------------------------------------------------------------------------
 %	SECTION 1
@@ -65,11 +63,9 @@ It is worth mentioning that the AQE project is completely open, hence anyone can
 %-----------------------------------
 \subsection{\href{http://beta.smartcitizen.me}{Smart Citizen}}
 
-Although this is a very young project (still in beta stage) it intends to create the biggest community around social sensing.
+Although this is a very young project (still in beta stage) it intends to create the biggest community around social sensing. It was initially crowdfounded in 2012 through a \href{http://goteo.org/project/smart-citizen-sensores-ciudadanos}{Goteo} campaign and they are planning on going to Kickstarter soon.
 
-It was initially crowdfounded in 2012 through a \href{http://goteo.org/project/smart-citizen-sensores-ciudadanos}{Goteo} campaign and they are planning on going to Kickstarter soon.
-
-The Smart Citizen platform allows its users to precisely geolocate their data and see other users' information. There is also a very big emphasis in data sociability, since every value or datastream (set of values that represent an individual sensor) can be shared through any social networking site or even inside the same web application.
+The Smart Citizen platform allows its users to precisely geolocate their data and see other users' information. There is also a very big emphasis in data sociability, since every value or datastream\footnote{Set of values that represent an individual sensor.} can be shared through any social networking site or even inside the same web application.
 
 Openness is as well one of their main values, since every piece of code (including the website) is open source licensed.
 
@@ -81,6 +77,10 @@ Openness is as well one of their main values, since every piece of code (includi
 
 All gathered information must be stored in some place, and this is where open data portals come in play. 
 
-These websites provide users with an open API so they can upload new values, create new feeds (representation of an environment), retrieve the data end even create customized triggers. This way, we cannot only sense but act to certain kinds of events. Because data itself is worthless, one of their most important features are data visualization tools.
+These websites provide users with an open API so they can upload new values, create new feeds (representation of an environment), retrieve the data end even create customized triggers, such as sending a push notification to a smartphone or even ``tweeting'' something. This way, we cannot only sense but act to certain kinds of events. 
+
+Because data by itself is usually worthless, one of their most important features are data visualization tools. They allow us to easily detect patterns and also even correlate certain factors.
+
+% TODO - Add screenshot of "Open Sensor Node #1" feed
 
 Good examples of these sites are, as mentioned before, \href{http://www.cosm.com}{Cosm} and \href{http://open.sen.se/}{Sen.se}. Both are free to use and very easy to interact with (mainly through HTTP packets).
