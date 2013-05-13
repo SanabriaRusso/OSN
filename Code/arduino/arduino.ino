@@ -11,18 +11,44 @@ DHT dht(DHTPIN, DHTTYPE);
 // Create an XBee object
 XBee xbee = XBee();
 
-// we are going to send two floats of 4 bytes each
+/*
+ * The 'payload' variable will hold the data to be sent.
+ * Append a 0 for every byte you want to transmit.
+ * -----------------------------------------------------
+ * Fundamental data types sizes:
+ *  - bool: 1 byte
+ *  - char: 1 byte
+ *  - short int: 2 bytes
+ *  - int: 4 bytes
+ *  - long int (long): 4 bytes
+ *  - float: 4 bytes
+ *  - double: 8 bytes
+ *  - long double: 8 bytes
+ */
+
 uint8_t payload[12] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
 // Union to convert float to byte string
-union u_tag {
+union u_float {
     uint8_t b[4];
     float fval;
-} u;
+} uf;
+
+// Union to convert int to byte string
+union u_int {
+    uint8_t b[4];
+    int ival;
+} ui;
+
+// Union to convert char to byte string
+union u_char {
+    uint8_t b[1];
+    char cval;
+} uc;
 
 
 // SH + SL Address of receiving XBee
-XBeeAddress64 addr64 = XBeeAddress64(0x0013A200, 0x408B3D92);
+XBeeAddress64 addr64 = XBeeAddress64(0x0013A200, 0x408B3D9B);
 ZBTxRequest zbTx = ZBTxRequest(addr64, payload, sizeof(payload));
 ZBTxStatusResponse txStatus = ZBTxStatusResponse();
 
@@ -78,24 +104,24 @@ void loop()
     if (!isnan(t) && !isnan(h)) {
 
         // Convert humidity and temperature into a byte array and copy it into the payload array
-        u.fval = h;
+        uf.fval = h;
         for (int i=0;i<4;i++){
-            payload[i]=u.b[i];
+            payload[i]=uf.b[i];
         }
 
-        u.fval = t;
+        uf.fval = t;
         for (int i=0;i<4;i++){
-            payload[i+4]=u.b[i];
+            payload[i+4]=uf.b[i];
         }
         
-        u.fval = s;
+        uf.fval = s;
         for (int i=0;i<4;i++){
-            payload[i+8]=u.b[i];
+            payload[i+8]=uf.b[i];
         }
 
         xbee.send(zbTx);
 
-        // flash TX indicator
+        // Packet is being sent
         flashLed(statusLed, 1, 100);
 
         // after sending a tx request, we expect a status response
@@ -107,6 +133,7 @@ void loop()
           if (xbee.getResponse().getApiId() == ZB_TX_STATUS_RESPONSE) {
             xbee.getResponse().getZBTxStatusResponse(txStatus);
 
+            /*
             // get the delivery status, the fifth byte
             if (txStatus.getDeliveryStatus() == SUCCESS) {
               // success.  time to celebrate
@@ -114,14 +141,15 @@ void loop()
             } else {
               flashLed(errorLed, 3, 500);
             }
+            */
           }
-        } else if (xbee.getResponse().isError()) {
+        } /* else if (xbee.getResponse().isError()) {
           //nss.print("Error reading packet.  Error code: ");  
           //nss.println(xbee.getResponse().getErrorCode());
         } else {
           // local XBee did not provide a timely TX Status Response -- should not happen
           flashLed(errorLed, 2, 50);
-        }
+        }*/
     }
     delay(1000);
 }
