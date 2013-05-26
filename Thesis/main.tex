@@ -31,6 +31,7 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[square, numbers, comma, sort&compress]{natbib} % Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers' 
+\usepackage{verbatim} 
 \hypersetup{urlcolor=blue, colorlinks=true} % Colors hyperlinks in blue - change to black if annoying
 \title{\ttitle} % Defines the thesis title - don't touch this
 
@@ -192,12 +193,16 @@ The acknowledgements and the people to thank go here, don't forget to include yo
 \lhead{\emph{Abbreviations}} % Set the left side page header to "Abbreviations"
 \listofsymbols{ll} % Include a list of Abbreviations (a table of two columns)
 {
+\textbf{ACK} & \textbf{A}\textbf{C}\textbf{K}nowledgement \\
 \textbf{ADC} & \textbf{A}nalog to \textbf{D}igital \textbf{C}onverter \\
 \textbf{BuB} & \textbf{B}ottom-\textbf{u}p \textbf{B}roadband \\
+\textbf{DIO} & \textbf{D}igital \textbf{I}nput \textbf{O}utput \\
+\textbf{ICT} & \textbf{I}nformation and \textbf{C}ommunications \textbf{T}echnology \\
 \textbf{ISM} & \textbf{I}ndustrial \textbf{S}cientific and \textbf{M}edical \\
 \textbf{LAN} & \textbf{L}ocal \textbf{A}rea \textbf{N}etwork \\
 \textbf{LoS} & \textbf{L}ine \textbf{o}f \textbf{S}ight \\
 \textbf{PAN} & \textbf{P}ersonal \textbf{A}rea \textbf{N}etwork \\
+\textbf{RF} & \textbf{R}adio \textbf{F}requency \\
 %\textbf{Acronym} & \textbf{W}hat (it) \textbf{S}tands \textbf{F}or \\
 %\textbf{Acronym} & \textbf{W}hat (it) \textbf{S}tands \textbf{F}or \\
 }
@@ -206,6 +211,7 @@ The acknowledgements and the people to thank go here, don't forget to include yo
 %	PHYSICAL CONSTANTS/OTHER DEFINITIONS
 %----------------------------------------------------------------------------------------
 
+\begin{comment}
 \clearpage % Start a new page
 
 \lhead{\emph{Physical Constants}} % Set the left side page header to "Physical Constants"
@@ -215,11 +221,13 @@ The acknowledgements and the people to thank go here, don't forget to include yo
 Speed of Light & $c$ & $=$ & $2.997\ 924\ 58\times10^{8}\ \mbox{ms}^{-\mbox{s}}$ (exact)\\
 % Constant Name & Symbol & = & Constant Value (with units) \\
 }
+\end{comment}
 
 %----------------------------------------------------------------------------------------
 %	SYMBOLS
 %----------------------------------------------------------------------------------------
 
+\begin{comment}
 \clearpage % Start a new page
 
 \lhead{\emph{Symbols}} % Set the left side page header to "Symbols"
@@ -235,6 +243,7 @@ $P$ & power & W (Js$^{-1}$) \\
 $\omega$ & angular frequency & rads$^{-1}$ \\
 % Symbol & Name & Unit \\
 }
+\end{comment}
 
 %----------------------------------------------------------------------------------------
 %	DEDICATION
@@ -263,7 +272,7 @@ $\omega$ & angular frequency & rads$^{-1}$ \\
 \input{./Chapters/Chapter2}
 \input{./Chapters/Chapter3}
 \input{./Chapters/Chapter4} 
-%\input{./Chapters/Chapter5} 
+\input{./Chapters/Chapter5} 
 %\input{./Chapters/Chapter6} 
 %\input{./Chapters/Chapter7} 
 
