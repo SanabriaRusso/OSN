@@ -24,14 +24,15 @@ We now live in a world where we hear a lot the word ``sensor'', but what is exac
 
 This definition might seem (and is) quite simple, but complexity resides on calibration and coming up with actual useful applications. Since every sensor from the same family is equal in terms of design but different in reality (due to small random variations during the fabrication process) output has to be adjusted to agree with a given standard. When it comes to applications, RFID tags can be used to determine wether a book is on the right spot in a library or not, or with a very intense light beam we can detect how the blood flows through a vein thus succesfully sensing heart rate. These are just two imaginative uses for nowaday sensors.
 
-In the first (and only at the time) iteration of this pilot only environmental factors have been measured since those have been tested over and over for the last years and they serve as a proof of concept for this network.
+Right now, only environmental factors have been measured since those have been tested over and over for the last years and they serve as a proof of concept for this network.
 
 %-----------------------------------
 %	SUBSECTION 1 - DHT22
 %-----------------------------------
 \subsection{Aosong DHT22}
+\label{sub:dht}
 
-The DHT22\citep{dht22sensor} is a low cost humidity and temperature sensor designed by Aosong Electronics, a Chinese corporation. This is a digital sensor, which means that the output is represented in the form of bits, thus requiring some amount of computational power to ``interpret'' the results. The output format is precisely described in the datasheet of this product, and luckily there already are some library implementations to work with the DHT22. Then, this device will only work with platforms that allow digital input, such Arduino.
+The DHT22 is a low cost humidity and temperature sensor designed by Aosong Electronics, a Chinese corporation\footnote{Its datasheet can be found at: \url{http://www.adafruit.com/datasheets/DHT22.pdf}}. This is a digital sensor, which means that the output is represented in the form of bits, thus requiring some amount of computational power to ``interpret'' the results. The output format is precisely described in the datasheet of this product, and luckily there already are some library implementations to work with the DHT22. Then, this device will only work with platforms that allow digital input, such Arduino.
 
 \begin{figure}[htbp]
     \centering
@@ -47,6 +48,7 @@ The DHT22\citep{dht22sensor} is a low cost humidity and temperature sensor desig
 %------------------------------------
 
 \subsection{Emartee Mini Sound Sensor}
+\label{sub:sound}
 
 Manufactured by Emartee, can also be found by the name of ``Emartee part number 4021'', and can be used to measure noise levels among other uses. Esentially, it consists on a microphone with a built-in amplifier onto a breakout board, which can be useful to work directly with perfboards or breadboards (both construction bases for rapid prototyping of electronic circuits).
 
@@ -58,8 +60,9 @@ The output signal is analog and is increased by a factor that allows an Arduino 
 %------------------------------------
 
 \subsection{Sharp GP2Y1010AU0F}
+\label{sub:sharp}
 
-This is an inexpensive optical dust sensor, used to measure air quality. It is made out of an infrarred emitting diode which with a well positioned phototransistor can measure the reflected IR rays thus detecting dust levels in the air\citep{sharp}. This device, which can be powered with up to 7V gives an output voltage (analog) proportional to dust density in the air. Some of its applications are air monitoring and air conditioning.
+This is an inexpensive optical dust sensor, used to measure air quality. It is made out of an infrarred emitting diode which, with a well positioned phototransistor can measure the reflected IR rays thus detecting dust levels in the air\citep{sharp}. This device, which can be powered with up to 7V gives an output voltage (analog) proportional to dust density in the air. Some of its applications are air monitoring and air conditioning.
 
 \begin{figure}[htbp]
     \centering
@@ -69,7 +72,14 @@ This is an inexpensive optical dust sensor, used to measure air quality. It is m
     \label{fig:SharpGP2Y1010AU0F}
 \end{figure}
 
-Surprisingly, this detector, which is worth at the time of writing about \$12, gives very precise results, similar to those offered by an expensive laser particle counter.\citep{airquality}
+Surprisingly, this detector, which is priced at the time of writing about \$12, gives very precise results, similar to those offered by an expensive laser particle counter.\citep{airquality}
+
+
+%-----------------------------------
+%	SUBSECTION 4 - LM35
+%-----------------------------------
+\subsection{LM35}
+% TODO
 
 
 %----------------------------------------------------------------------------------------
@@ -77,8 +87,9 @@ Surprisingly, this detector, which is worth at the time of writing about \$12, g
 %----------------------------------------------------------------------------------------
 
 \section{Digi XBee\textregistered{} Wireless RF Module}
+\label{sec:xbee}
 
-These radio modules are based on the IEEE 802.14.4 standard and provide an unexpensive, low power, low rate communication. They mainly use ISM bands. Despite their size provide us with many interesting features, such as 128-bit encryption, over-the-air configuration and ADC/digital input/output pins\citep{xbeedatasheet}.
+These radio modules are based on the IEEE 802.14.4 standard and provide an unexpensive, low power, low rate communication. They mainly use ISM\footnote{Descripción de ISM.} bands. 
 
 \begin{figure}[htbp]
     \centering
@@ -88,7 +99,9 @@ These radio modules are based on the IEEE 802.14.4 standard and provide an unexp
     \label{fig:XBee RF Module}
 \end{figure}
 
-There are two versions of these modules, named ``Series 1'' and ``Series 2''. The older one (Series 1) implements the previously mentioned IEEE 802.15.4 standard which allows point to point (or star) topologies. On the other hand however, the latter implements a standard specification called \emph{ZigBee}. This protocol, although more complex has mesh networking capabilities which can be a key feature in some sensor networks.
+There are two versions of these modules, named ``Series 1'' and ``Series 2''. The older one (Series 1) implements the previously mentioned IEEE 802.15.4 standard which enables the network to follow point to point topologies. On the other hand however, the latter implements a standard specification called \emph{ZigBee}. This protocol, although more complex has mesh networking capabilities which can be a key feature in some sensor networks.
+
+Despite their size provide us with many interesting features, such as 128-bit encryption, over-the-air configuration and several pins that enables the XBee to read analog values as well as working with digital input and output\citep{xbeedatasheet}.
 
 This is why for the sake of this project ``Series 2'' has been chosen. It is worth saying that each of the two versions can transmit with different power levels thus varying the effective communication range\citep{faludi2010building}. More detailed information can be found in the table below.
 
@@ -156,3 +169,38 @@ Clock Speed &	16 MHz\\
 \end{tabular}
 \caption{Characteristics of the Arduino UNO.}
 \end{table}
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 4 - RASPBERRY PI
+%----------------------------------------------------------------------------------------
+\section{Raspberry Pi}
+
+This device is an inexpensive GNU/Linux box that follows an ARM architecture that acts as the sink of the network. There are two models of this device: one that has 256MB of RAM (known as model A), and another one that has 512MB of such memory (model B). As for the processor it utilizes a 700MHz Broadcom SOC. The operating system is directly loaded from an SD.
+
+Currently it supports many popular distributions, such as: Arch GNU/Linux, Raspbian (a fork of Debian specifically designed to run on the Raspberry Pi), NetBSD, etc.
+
+This is an optional part of the network since an XBee can be attached to any device that speaks serial. Nonetheless it is small and low-power, providing the necessary modularity for this kind of systems.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.2]{./Figures/pi.jpg}
+        \rule{35em}{0.5pt}
+        \caption[Raspberry Pi]{Raspberry Pi}
+    \label{fig:RaspberryPi}
+\end{figure}
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 5 - WI-FI DONGLE
+%----------------------------------------------------------------------------------------
+\section{D-Link DWA-123}
+
+The Raspberry Pi, as stated before, has an ethernet interface, but in case such option cannot be used, a Wi-Fi dongle is the best solution. This model in particular is works out-of-the box with the Raspberry Pi and is cheap as well, supporting 802.11b/g/n.
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 6 - Arch GNU/Linux ARM
+%----------------------------------------------------------------------------------------
+\section{Arch GNU/Linux ARM}
+Explicar.
