@@ -10,17 +10,18 @@
 
 Sensor networks, as many other technological advances see their origin on military research. They date back to the early 60's during the Cold War, when the United States deployed an underwater system to detect Soviet submarines called SOSUS (sound surveillance system). However, it is not until the beginnings of the 21st century that more applications were found beyond warfare. The main causes for that to happen is that the cost and the size of the components did decrease.
 
-Also, new sets of wireless standars did see the light. IEEE 802.15 allows to create networks in a short radius called WPANs\footnote{Wireless personal area networks, defined in IEEE 802.15, refer to networks where devices are a few meters away from each other.} with a low bitrate and incredibly extending battery lifetimes. On the other hand we have IEEE 802.11, which enables wireless communications to experiment similar bitrates to those obtained in a wired network.
+Another crucial factor for this to happen is that new sets of wireless standars did see the light. On one hand we have IEEE 802.15 that allows to create low bitrate networks called WPANs\footnote{Wireless personal area networks, defined in IEEE 802.15, refer to wireless networks where devices are just a few meters away from each other.} which incredibly extend battery lifetimes. On the other hand IEEE 802.11 enables wireless communications to experiment similar bitrates to those obtained in a wired network.
 
-One of the motivations to develop an open sensor network is that normally those who are the owners of the information keep it to themselves, a situation on which nothing is given back to society. Thus social, cultural and urban development  gets narrowed\citep{hollands2008will}.
+One of the motivations to develop an open sensor network is that normally those who are the owners of the information keep it to themselves, a situation on which nothing is given back to society. Therefore, it is important to share all gathered information.
 
-% TODO- Y por tanto, es conveniente que...
-Also, deploying sensor networks significantly contributes to the growth of smart cities ICT\footnote{Information and communications technology, expand.} structures which, at the same time, makes urban areas thrive\citep{caragliu2009smart}.
+Deploying sensor networks significantly contributes to the growth of smart cities ICT\footnote{Information and communications technology.} structures which, at the same time make social, cultural and urban development thrive\citep{caragliu2009smart}\citep{hollands2008will}.
 % TODO expand footnote
 
-There are already some initiatives that make use of wireless sensor networks. The word ``initiative'' is not intended to refer just to companies but also to organizations and individuals. At the time of writing, we can distinguish between two main kinds of sensor networks: company-driven and community-driven networks, depending on who shapes the system.
+There are already some initiatives that are based on wireless sensor networks. The word ``initiative'' is not intended to refer just to companies but also to organizations and individuals, from city halls that want to improve the daily lives of its citizens to people that want to share the environmental conditions from their balconies.
 
-% However, during the last years sensor networks have not been used just because of their usefulness but also with data sociability and smart cities in mind. As an example, a citizen could present to the authorities actual noise levels at night, as well as knowing if a storm is coming because some friend shared his pressure and humidity levels on a social networking site.
+At the time of writing, we can distinguish between two main kinds of sensor networks: company-driven and community-driven networks, depending on who shapes the system.
+
+% During the last years sensor networks have also been deployed with data sociability and smart cities in mind. That is, sensors do not help us only by creating a model of reality for us to interpret but also they can communicate between them and translate the information into something we can understand.
 
 These networks can generate a big amount of data creating the necessity of storing this information and making it always available for further usage. There are already some websites with the only objective of storing this information and providing beautiful visualization tools.
 
@@ -39,7 +40,7 @@ These kind of systems work normally in an opaque or translucent way but with the
 %-----------------------------------
 \subsection{Libelium}
 
-This is one of the biggest companies in the world built around wireless sensor networks. It offers the mechanisms and tools to deploy and build systems around the Internet of Things, smart cities and M2M\footnote{Machine-to-machine communications are established between two devices.} communications.
+Having its headquarters in Aragón (Spain), this is one of the biggest companies in the world built around wireless sensor networks. It offers the mechanisms and tools to deploy and build systems around the Internet of Things, smart cities and M2M\footnote{Machine-to-machine communications are established between two devices.} communications.
 % TODO explicar mejor m2m
 
 \begin{figure}[htbp]
@@ -50,7 +51,7 @@ This is one of the biggest companies in the world built around wireless sensor n
     \label{fig:ArduinoUNO}
 \end{figure}
 
-The majority of the products they sell are focused on one specific application, such as waste management, structural health, etc. These are intended to be bought by system integrators for end users. However, they also offer the so-called ``Waspmote'', which is a sensor device for developers that can be freely customized and reprogrammed, since this is an open source product.
+The majority of the products they sell are focused on one specific application, such as waste management, structural health, etc. These systems are intended to be bought by system integrators for end users. However, they also offer the so-called ``Waspmote'', which is a sensor device for developers that can be freely customized and reprogrammed, since it is an open source product.
 
 Their products are being widely used across more than 75 countries and they are definitely one of the leaders of the wireless sensor network industry.
 
@@ -73,20 +74,28 @@ Community-driven projects give more control to the individual user. \emph{expand
 
 This is a sensor network that aims, as its own name indicates, to measure the air quality. This is  through $NO_{2}$ and $CO$ levels.
 
-Each user is supposed to connect their egg to their local network via an Ethernet inferface. Then, a bunch of outdoor sensors are placed outside and communicate their readings to the base station (the egg) wirelessly through a radio frequency transmitter. Finally the data is sent in real time to Cosm\footnote{\url{http://www.cosm.com}}, an open data portal that will be described in the next section.
+Each user is supposed to connect their egg to their local network via an Ethernet inferface. Then, a bunch of outdoor sensors are placed outside and communicate their readings to the base station ---as it can be seen in figure \ref{fig:aqe}--- wirelessly through a radio frequency transmitter. Finally the data is sent in real time to Cosm\footnote{\url{http://www.cosm.com}}, an open data portal that will be described in the next section.
 
-It is worth mentioning that the AQE project is completely open, hence anyone can improve the platform as well as building his own egg from scratch without having to actually buy one. All the information related to the hardware, software and sensor calibration can be found in their \href{http://airqualityegg.wikispaces.org}{wiki}.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=2.2]{./Figures/egg.png}
+        \rule{35em}{0.5pt}
+        \caption[Air Quality Egg typical scenario]{AQE typical scenario.}
+    \label{fig:aqe}
+\end{figure}
+
+It is worth mentioning that the AQE project is completely open, hence anyone can improve the platform as well as building his own egg from scratch without having to actually buy one. All the information related to the hardware, software and sensor calibration can be found in their wiki\footnote{\url{http://airqualityegg.wikispaces.org}}.
 
 %-----------------------------------
 %	SUBSECTION 2.2
 %-----------------------------------
 \subsection{Smart Citizen}
 
-Although this is a very young project (still in beta stage) it intends to create the biggest community around social sensing. It was initially crowdfounded in 2012 through a Goteo\footnote{Goteo is a Spanish social network that helps crowdfund open projects that result in a society improvement.} campaign and they are planning on going to Kickstarter soon.
+Designed in Barcelona, this is a very young project (still in beta stage) that intends to create the biggest community around social sensing. It was initially crowdfounded in 2012 through a Goteo\footnote{Goteo is a Spanish social network that helps crowdfund open projects that result in a society improvement.} campaign and they are planning on going to Kickstarter soon.
 
-The Smart Citizen platform allows its users to precisely geolocate their data and see other users' information. There is also a very big emphasis in data sociability, since every value or datastream\footnote{Set of values that represent an individual sensor.} can be shared through any social networking site or even inside the same web application.
+The Smart Citizen platform allows its users to precisely geolocate their data and see other users' information. There is also a very big emphasis in data sociability, since every value or datastream\footnote{Set of values that represent an individual sensor.} can be shared through any social networking site or inside the same web application.
 
-Openness is as well one of their main values, since every piece of code (including the website) is open source licensed.
+Openness is as well one of their main values, since every piece of code (including the very own website) is open source licensed.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 3
@@ -96,12 +105,12 @@ Openness is as well one of their main values, since every piece of code (includi
 
 All gathered information must be stored in some place, and this is where open data portals (also called Internet of Things clouds) come in play. 
 
-These websites provide users with an open API\footnote{Explicar API?} so they can upload new values, create new feeds\footnote{Representation of an environment. A feed can be a museum hall, where presence and noise levels are measured.}, retrieve the data end even create customized triggers, such as sending a push notification to a smartphone or even ``tweeting'' something. This way, we cannot only sense but \emph{act} to certain kinds of events.
+These websites provide users with an open API so they can upload new values, create new feeds\footnote{Representation of an environment. A feed can be, for instance, a museum hall where presence and noise levels are measured.}, retrieve the data end even create customized triggers, such as sending a push notification to a smartphone or even ``tweeting'' something. This way, we cannot only sense but \emph{react} to certain kinds of events.
 
-Because data by itself is usually worthless, one of their most important features are data visualization tools. They allow us to easily detect patterns and also even correlate certain factors.
+Because data by itself is usually worthless, one of their most important features is the availability of data visualization tools. They allow us to easily detect patterns and also even correlate certain factors.
 
 % TODO - Add screenshot of "Open Sensor Node #1" feed
 
-Good examples of these sites are, as mentioned before, \href{http://www.cosm.com}{Cosm} and \href{http://open.sen.se/}{Sen.se}. Both are free to use and very easy to interact with (mainly through simple HTTP packets).
+Good examples of these sites are, as mentioned before, Cosm (now renamed to Xively) and Sen.se\footnote{\url{http://open.sen.se/}}. Both are free to use and very easy to interact with ---mainly through simple HTTP packets---.
 
-In case we want to host our own cloud for the Internet of Things, there is also a great solution called \href{http://nimbits.com}{Nimbits}. It is open source software and anyone can install it in its own server. It is very easy to fetch and push data to the platform, since it has a RESTful API.
+In case we want to host our own cloud for the Internet of Things, there is also a great solution called Nimbits\footnote{\url{http://nimbits.com}}. It is open source software and anyone can install it in its own server. It is very easy to fetch and push data to the platform, since it has a RESTful API\footnote{Web API that works with the regular HTTP methods. That is, \texttt{GET}, \texttt{PUT}, \texttt{POST} and \texttt{DELETE}.}.
