@@ -32,6 +32,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[square, numbers, comma, sort&compress]{natbib} % Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers' 
 \usepackage{verbatim} 
+%\usepackage{footnote}
 \hypersetup{urlcolor=blue, colorlinks=true} % Colors hyperlinks in blue - change to black if annoying
 \title{\ttitle} % Defines the thesis title - don't touch this
 
@@ -150,7 +151,10 @@ Dave Barry
 
 \abstract{\addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for aesthetics
 
-The Thesis Abstract is written here (and usually kept to just this page). The page is kept centered vertically so can expand into the blank space above the title too\ldots
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Sensor networks are increasingly being used for environmental monitoring to anticipate or react to certain events. Despite many initiatives seemingly encouraging and being based on the use of sensor networks, only a few are really open. In this thesis we design, prototype and test a wireless sensor network using open hardware and open source software. Arduino and ZigBee are the main bases for the sensor nodes, and a Raspberry Pi is used as a data sink. Gathered information is then uploaded to cloud platforms, making it available to developers which can bring new ideas to life. The proposed solution is an economical, flexible and do-it-yourself alternative to those willing to collect and share sensory data.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 }
 
 \clearpage % Start a new page
