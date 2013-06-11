@@ -121,10 +121,12 @@ Despite their size these devices provide us with many interesting features, such
 
 This is why for the sake of this project ``Series 2'' has been chosen. It is worth saying that each of the two versions can transmit with different power levels thus varying the effective communication range\citep{faludi2010building}. More detailed information can be found in table \ref{tab:xbee_versions}.
 
+Also, any XBee\textregistered{} device has two operational modes, namely transparent and API. In transparent mode ---also known as AT mode---, the device only relays serial data until it reaches the network coordinator. This mode is simple and ``universal'', since a connection can be established with every device that speaks and understands serial. However, neither data reception or integrity are assured (specially when working with the popular 2.4GHz ISM band, which is higly saturated) and eavesdropping can be a real problem since encryption cannot be used. On the other hand, API mode is slightly more complex than transparent mode, since information is encapsulated in packets.
+
 % -T-A-B-L-E---- 
 \begin{table}[ht] 
 \centering
-\begin{tabular}{l l l l}
+\begin{tabular}{c|l l l}
     Version     & Power                 & Indoor range     & LoS range\footnotemark[7]\\
 \hline
 Series 1        & 1mW                   & 30m              & 100m\\
@@ -139,7 +141,7 @@ Series 2 PRO    & 63mW\footnotemark[8]  & 90m              & 1500m\\
 \footnotetext[7]{LoS range refers to line of sight range. That is, when a straight line can be drawn from the transmitter to the receiver. In this situation, there are no obstacles between them and better bitrates and/or ranges can be achieved.}
 \footnotetext[8]{This output power can be obtained using high gain antennas.}
 
-Also, if extra range is needed (up to 40km in line of sight) there are also XBee\textregistered{} devices that transmit in lower ISM bands (900 and 868 MHz). However, when transmitting in these frequencies neither ZigBee nor IEEE 802.15.4 can be used. DigiMesh\texttrademark{} networking protocol is the only option and it is property of Digi International Inc, which has extra features.
+Also, if extra range is needed (up to 40km in line of sight) there are also XBee\textregistered{} devices that transmit in lower ISM bands ---900 and 868 MHz---. However, when transmitting in these frequencies neither ZigBee nor IEEE 802.15.4 can be used. DigiMesh\texttrademark{} networking protocol is the only option and it is property of Digi International Inc, which has extra features.
 
 
 %----------------------------------------------------------------------------------------
@@ -189,6 +191,9 @@ Clock Speed &	16 MHz\\
 \label{tab:arduinofeatures}
 \end{table}
 
+\subsection{External libraries}
+In order to interact with the XBee module I used the \texttt{xbee-arduino} library, which is C/C++ library that enables an Arduino to send and receive information via an XBee\textregistered{} radio. It was originally developed by Andrew Rapp and is currently hosted on Google Code\footnote{More information can be found at \url{https://code.google.com/p/xbee-arduino/}}.
+
 
 %----------------------------------------------------------------------------------------
 %	SECTION 4 - RASPBERRY PI
@@ -222,6 +227,7 @@ The Raspberry Pi, as stated before, has an ethernet interface, but in case such 
 %	SECTION 6 - Arch GNU/Linux ARM
 %----------------------------------------------------------------------------------------
 \section{Arch Linux ARM}
+\label{sec:alarmmm}
 
 The project originally started as a port of the popular distribution Arch Linux\footnote{\url{http://archlinux.org}}, compiled for ARM devices. The main feature of this ``distro'' is \emph{simplicity}.
 
@@ -240,3 +246,24 @@ Arch Linux ARM follows, as its predecessor does, the KISS (``keep it simple, stu
 %	SECTION 7 - Python
 %----------------------------------------------------------------------------------------
 \section{Python}
+\label{sec:whatispython}
+
+Python is a general-purpose, high-level scripting programming language that first saw the light of day in 1991, originally designed by Guido van Rossum. It is an open source language that has more than one implementation. The default implementation ---and used in this project--- is CPython, which is written in C. 
+
+There are two main versions of this programming language, 2.x and 3.x which are not compatible. Version 2.x will be the one used to complete the project since more libraries and modules use Python 2.x.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.4]{./Figures/python-logo.png}
+        \rule{35em}{0.5pt}
+        \caption[Python logo]{Python logo.}
+    \label{fig:pythonlogo}
+\end{figure}
+
+This project does not utilize solely the standard libraries but also some additional ones, such as:
+
+\begin{itemize}
+    \item \texttt{pyserial}\footnote{\url{http://pyserial.sourceforge.net/}} --- This library enables Python to establish serial connections (more specifically, following the RS-232 standard) with all kinds of devices. In this case, it allows us to receive data from an XBee\textregistered{} module.
+    \item \texttt{python-xbee}\footnote{\url{https://code.google.com/p/python-xbee/}} --- Written by Paul Malmsten, this library allows Python to work with XBee API serial information. It has two main operational modes, synchronous and asynchronous. That is, continuously receiving information from an XBee\textregistered{} (and blocking the whole program until it finishes) or spawning a new background thread every time a new packet arrives, respectively.
+    \item \texttt{python-requests}\footnote{\url{http://python-requests.org/}} --- This is an HTTP library that, according to its creator, is written ``for human beings''. In other words, HTTP requests made easy. This module will be used to upload sensory data to the Internet
+\end{itemize}
