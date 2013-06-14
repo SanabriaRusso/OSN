@@ -29,8 +29,11 @@
 
 \graphicspath{{./Pictures/}} % Specifies the directory where pictures are stored
 
+\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
+
 \usepackage[utf8]{inputenc}
-\usepackage[square, numbers, comma, sort&compress]{natbib} % Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers' 
+\usepackage[square, numbers, comma, sort&compress]{natbib}
 \usepackage{verbatim} 
 %\usepackage{footnote}
 \hypersetup{urlcolor=blue, colorlinks=true} % Colors hyperlinks in blue - change to black if annoying
@@ -74,13 +77,13 @@
 \begin{minipage}{0.4\textwidth}
 \begin{flushleft} \large
 \emph{Author:}\\
-\href{http://www.johnsmith.com}{\authornames} % Author name - remove the \href bracket to remove the link
+\href{http://alejandroandr.eu}{\authornames} % Author name - remove the \href bracket to remove the link
 \end{flushleft}
 \end{minipage}
 \begin{minipage}{0.4\textwidth}
 \begin{flushright} \large
 \emph{Supervisor:} \\
-\href{http://www.jamessmith.com}{\supname} % Supervisor name - remove the \href bracket to remove the link  
+\href{http://jaumebarcelo.info}{\supname} % Supervisor name - remove the \href bracket to remove the link  
 \end{flushright}
 \end{minipage}\\[3cm]
  
@@ -279,8 +282,8 @@ $\omega$ & angular frequency & rads$^{-1}$ \\
 \input{./Chapters/Chapter3}
 \input{./Chapters/Chapter4} 
 \input{./Chapters/Chapter5} 
-%\input{./Chapters/Chapter6} 
-%\input{./Chapters/Chapter7} 
+\input{./Chapters/Chapter6} 
+\input{./Chapters/Chapter7} 
 
 %----------------------------------------------------------------------------------------
 %	THESIS CONTENT - APPENDICES
@@ -294,7 +297,7 @@ $\omega$ & angular frequency & rads$^{-1}$ \\
 % Uncomment the lines as you write the Appendices
 
 \input{./Appendices/AppendixA}
-%\input{./Appendices/AppendixB}
+\input{./Appendices/AppendixB}
 %\input{./Appendices/AppendixC}
 
 \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
