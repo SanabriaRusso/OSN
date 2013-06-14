@@ -11,7 +11,7 @@
 %----------------------------------------------------------------------------------------
 
 
-Three essential blocks form a sensor network. Namely sensors, processors and communication devices\citep{chong2003sensor}. In the next sections all of them will be explained and in the next chapter I will show how are these related. There is even a case where a device (Digi XBee\textregistered) fulfills two of these roles.
+Three essential blocks form a sensor network. Namely sensors, processors and communication devices\citep{chong2003sensor}. In the next sections all of them will be explained and in chapter \ref{Chapter5} I will show how are these related.
 
 
 %----------------------------------------------------------------------------------------
@@ -24,9 +24,11 @@ We now live in a world where we hear a lot the word ``sensor'', but what is exac
 
 Since every sensor from the same family is equal in terms of design but different in reality (due to small random variations during the fabrication process) output has to be adjusted to agree with a given standard. When it comes to applications, only imagination poses a limit. RFID tags can be used to determine wether a book is on the right spot in a library or not, or with a very intense light beam we can detect how the blood flows through a vein therefore succesfully sensing heart rate. These are just two imaginative uses for nowaday sensors.
 
-As for types of sensors, we have simple sensors/complex sensors and passive/active. Simple ones just provide us with very basic information ---a binary state---. Cameras, on the other hand, are a perfect example of complex sensors. Active emit a signal to the environment and then measure the response, while passive just measure a factor from the surroundings.
+As for types of sensors, we have simple/complex and passive/active sensors. Simple ones just provide us with very basic information ---a binary state---. Cameras, on the other hand, are a perfect example of complex sensors. 
 
-Also, the output of a sensor can be expressed in two forms: digital and analog, depending on how data transmission is done. Digital  means that the output is represented in the form of bits, thus requiring some amount of computational power to ``interpret'' the results. Analog sensors usually act as a variable resistance depending on some factor, so zero processing power is needed.
+Active emit a signal to the environment and then measure the response, while passive just measure a factor from the surroundings.
+
+Also, the output of a sensor can be expressed in two formats. Digital and analog, depending on how data transmission is done. Digital  means that the output is represented in the form of bits, thus requiring some amount of computational power to ``interpret'' the results. Analog sensors usually act as a variable resistance depending on some factor, so zero processing power is needed.
 
 To complete this project, only environmental factors have been measured since those have been tested over and over for the last years and they serve as a proof of concept for this network. Also, sensors are not the main focus of the pilot but the tools to deploy such a network.
 
@@ -115,13 +117,25 @@ These radio modules are based on the IEEE 802.15.4 standard and provide unexpens
     \label{fig:XBee RF Module}
 \end{figure}
 
-There are two versions of these modules, named ``Series 1'' and ``Series 2''. The older one (Series 1) implements the previously mentioned IEEE 802.15.4 standard which enables the network to be configured in point to point topologies. On the other hand however, the latter implements a standard specification called \emph{ZigBee}\footnote{Protocol stack developed and maintained by the ZigBee Alliance, it was originally concieved because radio networks strongly needed ad-hoc and self-healing capabilities.}. This protocol, although more complex has mesh networking capabilities which can be a key feature in some sensor networks.
+There are two versions of these modules, chronologically named ``Series 1'' and ``Series 2''. The older version implements the previously mentioned IEEE 802.15.4 standard which enables the network to be configured in point to point topologies. This standard specifies the physycal and media access control layers for WPANs.
 
-Despite their size these devices provide us with many interesting features, such as 128-bit encryption, over-the-air configuration and several pins that enables the XBee to read analog values as well as working with digital input and output\citep{xbeedatasheet}.
+On the other hand however, the latter implements a standard specification called \emph{ZigBee}\footnote{Protocol stack developed and maintained by the ZigBee Alliance. More information can be found at \url{http://zigbee.org}}. It specifies the upper layer of the protocol stack. That is, network and application layers. Although more complex, ZigBee provides mesh networking capabilities which can be a key feature in some sensor networks.
+
+Despite their size these devices offer us many interesting features, such as 128-bit encryption, over-the-air configuration and several pins that enables the XBee to read analog values as well as working with digital input and output\citep{xbeedatasheet}.
 
 This is why for the sake of this project ``Series 2'' has been chosen. It is worth saying that each of the two versions can transmit with different power levels thus varying the effective communication range\citep{faludi2010building}. More detailed information can be found in table \ref{tab:xbee_versions}.
 
-Also, any XBee\textregistered{} device has two operational modes, namely transparent and API. In transparent mode ---also known as AT mode---, the device only relays serial data until it reaches the network coordinator. This mode is simple and ``universal'', since a connection can be established with every device that speaks and understands serial. However, neither data reception or integrity are assured (specially when working with the popular 2.4GHz ISM band, which is higly saturated) and eavesdropping can be a real problem since encryption cannot be used. On the other hand, API mode is slightly more complex than transparent mode, since information is encapsulated in packets.
+Also, any XBee\textregistered{} device has two operational modes, namely transparent and API. In transparent mode ---also known as AT mode---, the device only relays serial data until it reaches the network sink. This mode is simple and ``universal'', since a connection can be established with every device that speaks and understands serial. However, neither data reception or integrity are assured (specially when working with the popular 2.4GHz ISM band, which is higly saturated) and eavesdropping can be a real problem since encryption cannot be used. 
+
+On the other hand, API mode is slightly more complex than transparent mode, since information is encapsulated in packets. These are the main features of this operational mode:
+
+\begin{itemize}
+    \item When the sink receives a packet, it immediately transmits an ACK\footnote{Acknowledgement packets are used to indicate that the transmission was successful.} packet. If such packet is not received then transmitting radio will retry sending it.
+    \item Radios can be re-configured dinamically over the air.
+    \item Checksums that verify that no errors have been introduced. In other words, it checks the received information is the same than the one that was originally transmitted.
+    \item Encryption (using a symmetric key algorithm) can be enabled, either using one pre-established key or getting one from the network sink.
+    \item I/O samples, which enable us to use all the DIO\footnote{Although DIO stands for digital input/output, some of them can handle continous values through the ADC.} pins that the module has.
+\end{itemize}
 
 % -T-A-B-L-E---- 
 \begin{table}[ht] 
@@ -187,7 +201,7 @@ SRAM & KB (ATmega328)\\
 EEPROM &	1 KB (ATmega328)\\
 Clock Speed &	16 MHz\\
 \end{tabular}
-\caption{Characteristics of the Arduino UNO. Taken from the official Arduino website (\url{http://arduino.cc}).}
+\caption[Characteristics of the Arduino UNO]{Characteristics of the Arduino UNO. Taken from the official Arduino website (\url{http://arduino.cc}).}
 \label{tab:arduinofeatures}
 \end{table}
 
@@ -200,12 +214,6 @@ In order to interact with the XBee module I used the \texttt{xbee-arduino} libra
 %----------------------------------------------------------------------------------------
 \section{Raspberry Pi}
 
-This device is an inexpensive GNU/Linux box that follows an ARM architecture and acts as the sink of the network. There are two models of this device: one that has 256MB of RAM (known as ``model A''), and another one that has 512MB of such memory (``model B''). As for the processor it utilizes a 700MHz Broadcom SoC\footnote{System on a chip are integrated circuits that collect all the necessary modules of a traditional computer in one single chip.}. The operating system is directly loaded from an SD.
-
-Currently it supports many popular distributions, such as: Arch Linux, Raspbian (a fork of Debian specifically designed to run on the Raspberry Pi), Gentoo, NetBSD, etc.
-
-This is an optional part of the network since an XBee can be attached to any device that speaks serial. Nonetheless it is small and low-power, providing the necessary versatility for this kind of systems.
-
 \begin{figure}[htbp]
     \centering
     \includegraphics[scale=0.2]{./Figures/pi.jpg}
@@ -214,6 +222,11 @@ This is an optional part of the network since an XBee can be attached to any dev
     \label{fig:RaspberryPi}
 \end{figure}
 
+This device is an inexpensive GNU/Linux box that follows an ARM architecture and acts as the sink of the network. There are two models of this device: one that has 256MB of RAM (known as ``model A''), and another one that has 512MB of such memory (``model B''). As for the processor it utilizes a 700MHz Broadcom SoC\footnote{System on a chip are integrated circuits that collect all the necessary modules of a traditional computer in one single chip.}. The operating system is directly loaded from an SD.
+
+Currently it supports many popular distributions, such as: Arch Linux, Raspbian (a fork of Debian specifically designed to run on the Raspberry Pi), Gentoo, NetBSD, etc.
+
+This is an optional part of the network since an XBee can be attached to any device that speaks serial. Nonetheless it is small and low-power, providing the necessary versatility for this kind of systems.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 5 - WI-FI DONGLE
