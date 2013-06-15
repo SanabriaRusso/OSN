@@ -29,6 +29,7 @@
 
 \graphicspath{{./Pictures/}} % Specifies the directory where pictures are stored
 
+\usepackage{pdfpages}
 \usepackage{titlesec}
 \setcounter{secnumdepth}{4}
 
@@ -136,10 +137,10 @@ Date:\\
 
 \null\vfill % Add some space to move the quote down the page a bit
 
-\textit{``Thanks to my solid academic training, today I can write hundreds of words on virtually any topic without possessing a shred of information, which is how I got a good job in journalism."}
+\textit{``The years teach much which the days never knew."}
 
 \begin{flushright}
-Dave Barry
+Ralph Waldo Emerson
 \end{flushright}
 
 \vfill\vfill\vfill\vfill\vfill\vfill\null % Add some space at the bottom to position the quote just right
@@ -170,7 +171,15 @@ Sensor networks are increasingly being used for environmental monitoring to anti
 
 \acknowledgements{\addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for aesthetics
 
-The acknowledgements and the people to thank go here, don't forget to include your project advisor\ldots
+Foremost, I would like to thank my project supervisor, Jaume Barceló for his patience, motivation and guidelines. His pointers always motivated me to explore unknown horizons and I ended up learning a huge amount of knowledge.
+
+I also strongly thank the open source community, which has been as well so motivating and helpful, and never has stopped to help. Without it, I probable could never have finished my work.
+
+Thanks to the other fellows of BuB4EU Jorge Beltrán, Nacho Justel and Fernando Gros for accompanying me in this adventure.
+
+Finally, my sincere gratitude as well to the European Commission through the project Commons for Europe (CIP-ICT-PSP-2011-5-297191) which was the initial seed of this project.
+
+
 }
 \clearpage % Start a new page
 
@@ -262,7 +271,7 @@ $\omega$ & angular frequency & rads$^{-1}$ \\
 
 \pagestyle{empty} % Page style needs to be empty for this page
 
-\dedicatory{For/Dedicated to/To my\ldots} % Dedication text
+\dedicatory{Dedicated to my parents, who always believed in me, and who never hesitated on answering my infancy ``\emph{why does this work?'' questions.}} % Dedication text
 
 \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
 
@@ -296,9 +305,12 @@ $\omega$ & angular frequency & rads$^{-1}$ \\
 % Include the appendices of the thesis as separate files from the Appendices folder
 % Uncomment the lines as you write the Appendices
 
-\input{./Appendices/AppendixA}
 \input{./Appendices/AppendixB}
-%\input{./Appendices/AppendixC}
+\chapter{Pilot charter}
+\includepdf[pages={-}]{Appendices/project_charter.pdf}
+\chapter{Initial project schedule}
+\includepdf[pages={-}]{Appendices/timing.pdf}
+
 
 \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
 
